@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: actuator-service
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: aina.jain
+Implementation-Vendor-Id: com.brillio.meeting
+Build-Jdk: 1.8.0_251
+Implementation-URL: http://projects.spring.io/spring-boot/MeetingRoomB
+ ooking/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
