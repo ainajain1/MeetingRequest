@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.brillio.meeting.dao.ActionDao;
 import com.brillio.meeting.dao.impl.BookRepository;
+import com.brillio.meeting.exception.MeetingException;
 import com.brillio.meeting.model.Book;
 import com.brillio.meeting.model.Room;
 import com.brillio.meeting.service.ActionService;
@@ -28,22 +29,20 @@ public class ActionServiceImpl implements ActionService {
 		return availableRoomDetail;
 	}
 
-	public String bookRoom(int id) {
+	public String bookRoom(int id) throws MeetingException {
 		Room room = dao.getRoom(id);
 
-		if (room == null) {
-			return "FAILURE";
+		if (room == null || dao.isRoomBooked(id) != null) {
+			throw new MeetingException("FAILURE");
 		}
-		if (dao.isRoomBooked(id) != null)
-			return "FAILURE";
 		Book book = new Book(id);
 		book.setIsBooked(1);
 		return "Booking Id: " + bookRepository.saveAndFlush(book).getId();
 	}
 
-	public void cancelRoom(int referenceId) {
+	public void cancelRoom(int referenceId) throws MeetingException {
 		Book book = dao.getBook(referenceId);
-		if (book == null) return;
+		if (book == null) throw new MeetingException("Not Found.");
 		book.setIsBooked(0);
 		bookRepository.saveAndFlush(book);
 	}

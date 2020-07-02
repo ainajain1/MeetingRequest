@@ -1,6 +1,7 @@
 com\brillio\meeting\dao\impl\BookRepository.class
 com\brillio\meeting\model\Book.class
 com\brillio\meeting\service\LoaderService.class
+com\brillio\meeting\exception\MeetingException.class
 com\brillio\meeting\model\MeetingType.class
 com\brillio\meeting\config\HibernateConfig.class
 com\brillio\meeting\controller\ActionController.class
@@ -9,6 +10,7 @@ com\brillio\meeting\model\Room.class
 com\brillio\meeting\service\impl\ActionServiceImpl.class
 com\brillio\meeting\model\Floor.class
 com\brillio\meeting\model\Building.class
+com\brillio\meeting\exception\MeetingExceptionHandler.class
 com\brillio\meeting\service\ActionService.class
 com\brillio\meeting\Application.class
 com\brillio\meeting\dao\impl\ActionDaoImpl.class

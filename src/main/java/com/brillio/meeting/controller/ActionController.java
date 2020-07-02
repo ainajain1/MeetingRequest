@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.brillio.meeting.exception.MeetingException;
 import com.brillio.meeting.service.ActionService;
 
 @RestController
@@ -21,18 +22,18 @@ public class ActionController {
 	@Autowired
 	ActionService service;
 
-	@GetMapping("/get")
+	@GetMapping("/available-rooms")
 	public ResponseEntity<List<String>> getAvailableRooms() {
 		return new ResponseEntity<List<String>>(service.getAvailableRooms(), HttpStatus.OK);
 	}
 	
 	@PostMapping("/book")
-	public ResponseEntity<String> bookRoom(@RequestParam("id") int id) {
+	public ResponseEntity<String> bookRoom(@RequestParam("id") int id) throws MeetingException {
 		return new ResponseEntity<String>(service.bookRoom(id), HttpStatus.OK);
 	}
 	
 	@PatchMapping("/cancel")
-	public ResponseEntity<String> cancelRoom(@RequestParam("id") int referenceId) {
+	public ResponseEntity<String> cancelRoom(@RequestParam("booking_id") int referenceId) throws MeetingException {
 		service.cancelRoom(referenceId);
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}

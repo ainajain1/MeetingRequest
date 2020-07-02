@@ -47,7 +47,7 @@ public class ActionDaoImpl implements ActionDao {
 
 	public Book getBook(int referenceId) {
 		Criteria criteria = sessionFactory.openSession().createCriteria(Book.class)
-				.add(Restrictions.eq("id", referenceId));
+				.add(Restrictions.eq("id", referenceId)).add(Restrictions.eq("isBooked", 1));
 		List list = criteria.list();
 		if (list == null || list.isEmpty())
 			return null;
